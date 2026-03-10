@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Page</title>
-  <script src="Ridiculous.js"></script>
-  <link rel="stylesheet" href="Ridiculous.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<div class="page">
 
   <!-- Header -->
   <header>
@@ -32,8 +33,10 @@
     <button class="toolbar-btn round">Button</button>
   </div>
 
-  <!-- Main -->
+  <!-- Main: scrollable content + sidebar -->
   <main>
+
+    <!-- Scrollable content -->
     <div class="content">
 
       <!-- GROUP 1: Pink sections -->
@@ -72,7 +75,7 @@
         <div class="line" style="width:97%;"></div>
       </div>
 
-      <!-- Button divider -->
+      
       <div class="center-btn-wrap">
         <button class="center-btn">Button</button>
       </div>
@@ -113,7 +116,7 @@
         <div class="line" style="width:97%;"></div>
       </div>
 
-      <!-- Button divider -->
+
       <div class="center-btn-wrap">
         <button class="center-btn">Button</button>
       </div>
@@ -154,12 +157,12 @@
         <div class="line" style="width:97%;"></div>
       </div>
 
-       <!-- Button divider -->
+
       <div class="center-btn-wrap">
         <button class="center-btn">Button</button>
       </div>
 
-      <!-- GROUP 4: Red sections (#A01B1B) -->
+      <!-- GROUP 4: Red sections -->
       <div class="section">
         <div class="section-header red"><div class="section-title"></div></div>
         <div class="line" style="width:80%;"></div>
@@ -188,40 +191,12 @@
         <div class="line" style="width:97%;"></div>
       </div>
 
-      <div class="section">
-        <div class="section-header red"><div class="section-title"></div></div>
-        <div class="line" style="width:80%;"></div>
-        <div class="line" style="width:100%;"></div>
-        <div class="line" style="width:97%;"></div>
-      </div>
 
-      <!-- Button divider -->
       <div class="center-btn-wrap">
         <button class="center-btn">Button</button>
       </div>
 
-      <!-- GROUP 5: Yellow sections (#C1BB46) -->
-      <div class="section">
-        <div class="section-header yellow"><div class="section-title"></div></div>
-        <div class="line" style="width:80%;"></div>
-        <div class="line" style="width:100%;"></div>
-        <div class="line" style="width:97%;"></div>
-      </div>
-
-      <div class="section">
-        <div class="section-header yellow"><div class="section-title"></div></div>
-        <div class="line" style="width:80%;"></div>
-        <div class="line" style="width:100%;"></div>
-        <div class="line" style="width:97%;"></div>
-      </div>
-
-      <div class="section">
-        <div class="section-header yellow"><div class="section-title"></div></div>
-        <div class="line" style="width:80%;"></div>
-        <div class="line" style="width:100%;"></div>
-        <div class="line" style="width:97%;"></div>
-      </div>
-
+      <!-- GROUP 5: Yellow sections -->
       <div class="section">
         <div class="section-header yellow"><div class="section-title"></div></div>
         <div class="line" style="width:80%;"></div>
@@ -238,11 +213,15 @@
 
     </div>
 
-    <!-- Sidebar scrollbar -->
+    <!-- Sidebar scrollbar indicator -->
     <aside>
       <div id="sidebar-thumb" class="sidebar-thumb"></div>
     </aside>
+
   </main>
 
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>

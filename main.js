@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+  var content = document.querySelector(".content");
   var thumb = document.getElementById("sidebar-thumb");
   var aside = document.querySelector("aside");
 
@@ -8,27 +9,30 @@ document.addEventListener("DOMContentLoaded", function() {
   var thumbPosition = 0;
   var dragStartTime = null;
 
-  // Start page at the bottom
-  window.scrollTo(0, document.body.scrollHeight);
+  // Start content at the top
+  content.scrollTop = 0;
 
-  // Reverse mouse wheel
-  window.addEventListener("wheel", function(e) {
+  // Set thumb to bottom
+  setTimeout(function() {
+    var maxThumbInit = aside.clientHeight - thumb.clientHeight;
+    thumbPosition = maxThumbInit;
+    thumb.style.transform = "translateY(" + thumbPosition + "px)";
+  }, 50);
+
+  // Block all trackpad/wheel scrolling — only thumb drag scrolls
+  content.addEventListener("wheel", function(e) {
     e.preventDefault();
-    window.scrollBy(0, -e.deltaY);
   }, { passive: false });
-function preventScroll(e) {
+
+  document.addEventListener("wheel", function(e) {
     e.preventDefault();
-    e.stopPropagation();
-}
-
-
-document.body.addEventListener('wheel', preventScroll, { passive: false });
+  }, { passive: false });
 
   // Start drag
   thumb.addEventListener("mousedown", function(e) {
     isDragging = true;
     dragStartY = e.clientY;
-    dragStartTime = Date.now(); // start the clock when drag begins
+    dragStartTime = Date.now();
     e.preventDefault();
   });
 
@@ -39,10 +43,10 @@ document.body.addEventListener('wheel', preventScroll, { passive: false });
     var dragDistance = e.clientY - dragStartY;
     dragStartY = e.clientY;
 
-    // How long they have been dragging in seconds
+
     var secondsDragging = (Date.now() - dragStartTime) / 1000;
 
-    // Normal for first 2 seconds, then grows after
+    
     var multiplier;
     if (secondsDragging < 2) {
       multiplier = 3;
@@ -56,14 +60,14 @@ document.body.addEventListener('wheel', preventScroll, { passive: false });
     thumbPosition = Math.max(0, Math.min(thumbPosition, maxThumb));
     thumb.style.transform = "translateY(" + thumbPosition + "px)";
 
-    // Scroll with growing multiplier
-    window.scrollBy(0, -dragDistance * multiplier);
+    // Scroll content with multiplier (reversed)
+    content.scrollBy(0, -dragDistance * multiplier);
   });
 
   // Stop drag
   document.addEventListener("mouseup", function() {
     isDragging = false;
-    dragStartTime = null; // reset timer on release
+    dragStartTime = null;
   });
 
 });
